@@ -39,6 +39,7 @@ window.addEventListener("load", function () {
 
       let form = document.querySelector("form");
       form.addEventListener("submit", function (event) {
+         event.preventDefault();
 
          const pilotName = document.querySelector("input[name=pilotName]");
          const copilotName = document.querySelector("input[name=copilotName]");
@@ -60,7 +61,7 @@ window.addEventListener("load", function () {
 
             if (fuelLevel.value < 10000 && cargoMass.value > 10000) {
                document.getElementById("fuelStatus").innerHTML = "Fuel level too low for launch!";
-               document.getElementById("cargoMass").innerHTML = "Shuttle mass too large for take off!";
+               document.getElementById("cargoStatus").innerHTML = "Shuttle mass too large for take off!";
                document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
                document.getElementById("launchStatus").style.color = "red";
                document.getElementById("faultyItems").style.visibility = "visible";
@@ -74,7 +75,7 @@ window.addEventListener("load", function () {
             };
 
             if (cargoMass.value > 10000) {
-               document.getElementById("cargoMass").innerHTML = "Shuttle mass too large for take off!";
+               document.getElementById("cargoStatus").innerHTML = "Shuttle mass too large for take off!";
                document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
                document.getElementById("launchStatus").style.color = "red";
                document.getElementById("faultyItems").style.visibility = "visible";
@@ -87,7 +88,7 @@ window.addEventListener("load", function () {
             };
 
          };
-         event.preventDefault();
+
       });
    } catch (err) {
       console.error(err)
